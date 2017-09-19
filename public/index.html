@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,700" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" inte
+    
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -38,6 +39,14 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    window.gapi.load('client:auth2', () => {
+  window.gapi.client.init({
+    'apiKey': process.env.REACT_APP_GOOGLE_API_KEY,
+    'clientId': process.env.REACT_APP_GOOGLE_CLIENT_ID,
+    'scope': 'https://www.googleapis.com/auth/youtube',
+    'discoveryDocs': ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest']
+  })
+})  
     <script src="https://apis.google.com/js/api.js"></script>
   </body>
 </html>
