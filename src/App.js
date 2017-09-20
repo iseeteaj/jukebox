@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 import Login from './components/Login.js'
 import Header from './components/Header.js'
+import Sidebar from './components/Sidebar.js'
 
 class App extends Component {
   constructor () {
@@ -13,15 +14,18 @@ class App extends Component {
     }
   }
   render () {
-   if(this.state.authenticatedUser) {
-     return(
-       <div className="App">
-         <Header onSignOut={this.handleSignOut} />
-      </div>
-     )
+    if (this.state.authenticatedUser) {
+      return (
+        <div className='App'>
+          <Header onSignOut={this.handleSignOut} />
+          <div className='split'>
+            <Sidebar />
+          </div>
+        </div>
+      )
     }
     return (
-      <div className="App">
+      <div className='App'>
         <Login gAuthInstance={this.state.gAuthInstance} />
       </div>
     )

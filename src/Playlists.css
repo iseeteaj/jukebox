@@ -1,0 +1,12 @@
+.Playlists > .playlist {
+  display: block;
+  border-left: 10px solid transparent;
+  padding: 5px 15px;
+  color: #666;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.Playlists > .playlist:hover {
+  color: white;
+}
