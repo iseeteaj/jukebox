@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
+import Header from './components/Header'
+import Sidebar from './components/Sidebar'
+import Main from './components/Main'
+import NowPlaying from './components/NowPlaying'
+import Login from './components/Login'
+import Playlist from './components/Playlist'
+
 import './App.css'
-import Login from './components/Login.js'
-import Header from './components/Header.js'
-import Sidebar from './components/Sidebar.js'
 
 class App extends Component {
   constructor () {
@@ -12,23 +17,9 @@ class App extends Component {
       gAuthInstance: null,
       authenticatedUser: null
     }
-  }
-  render () {
-    if (this.state.authenticatedUser) {
-      return (
-        <div className='App'>
-          <Header onSignOut={this.handleSignOut} />
-          <div className='split'>
-            <Sidebar />
-          </div>
-        </div>
-      )
-    }
-    return (
-      <div className='App'>
-        <Login gAuthInstance={this.state.gAuthInstance} />
-      </div>
-    )
+
+    this.handleAuthorization = this.handleAuthorization.bind(this)
+    this.handleSignOut = this.handleSignOut.bind(this)
   }
 
   componentDidMount () {
@@ -54,12 +45,36 @@ class App extends Component {
       authenticatedUser: this.state.gAuthInstance.currentUser.get()
     })
   }
+
   handleSignOut () {
     this.state.gAuthInstance.signOut()
 
     this.setState({
       authenticatedUser: null
     })
+  }
+
+  render () {
+    if (this.state.authenticatedUser) {
+      return (
+        <div className='App'>
+          <Header onSignOut={this.handleSignOut} />
+          <div className='split'>
+            <Sidebar />
+            <Main>
+              <Route path='/playlists/:playlistId' component={Playlist} />
+            </Main>
+          </div>
+          <NowPlaying />
+        </div>
+      )
+    }
+
+    return (
+      <div className='App'>
+        <Login gAuthInstance={this.state.gAuthInstance} />
+      </div>
+    )
   }
 }
 

@@ -1,0 +1,20 @@
+.SearchInput {
+  position: relative;
+  color: #000000;
+}
+
+.SearchInput > input {
+  background-color: white;
+  border: 0;
+  border-radius: 20px;
+  padding: 5px 15px 5px 30px;
+  font-size: inherit;
+  font-family: inherit;
+  outline: none;
+}
+
+.SearchInput > i.fa-search {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+}

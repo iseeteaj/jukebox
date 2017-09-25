@@ -1,0 +1,25 @@
+.PlaylistItem {
+  display: table;
+  border-bottom: 1px solid #2C2C2C;
+  width: 100%;
+}
+
+.PlaylistItem > .play {
+  display: table-cell;
+  width: 15px;
+  padding: 10px 0;
+}
+
+.PlaylistItem > .play > .fa-play {
+  cursor: pointer;
+}
+
+.PlaylistItem > .play > .fa-play:hover {
+  color: #FF0000;
+}
+
+.PlaylistItem > .title {
+  display: table-cell;
+  padding-left: 15px;
+  cursor: default;
+}
